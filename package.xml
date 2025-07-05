@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>pointfoot_sdk_lowlevel</name>
+  <name>limxsdk_lowlevel</name>
   <version>0.0.0</version>
-  <description>pointfoot_sdk_lowlevel</description>
+  <description>limxsdk_lowlevel</description>
   <maintainer email="limx@limxdynamics.com">limxdynamics</maintainer>
   <license>TODO</license>
   <buildtool_depend    condition="$ROS_VERSION == 1">catkin</buildtool_depend>

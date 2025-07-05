@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(pointfoot_sdk_lowlevel)
+project(limxsdk_lowlevel)
 
 set(CMAKE_BUILD_TYPE "Release")
 
@@ -22,30 +22,30 @@ if(DEFINED ENV{ROS_DISTRO})
 
     include_directories(${catkin_INCLUDE_DIRS})
 
-    add_custom_target(pointfoot_sdk_lowlevel_include_target ALL
+    add_custom_target(limxsdk_lowlevel_include_target ALL
       COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/include/limxsdk ${CATKIN_DEVEL_PREFIX}/include
     )
 
     if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
       set(LIB_PATH ${PROJECT_SOURCE_DIR}/lib/aarch64)
-      add_custom_target(pointfoot_sdk_lowlevel_target ALL
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/libpointfoot_sdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
+      add_custom_target(limxsdk_lowlevel_target ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/liblimxsdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
       )
     elseif (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86_64")
       set(LIB_PATH ${PROJECT_SOURCE_DIR}/lib/amd64)
-      add_custom_target(pointfoot_sdk_lowlevel_target ALL
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/libpointfoot_sdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
+      add_custom_target(limxsdk_lowlevel_target ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/liblimxsdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
       )
     elseif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "arm")
       set(LIB_PATH ${PROJECT_SOURCE_DIR}/lib/arm32)
-      add_custom_target(pointfoot_sdk_lowlevel_target ALL
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/libpointfoot_sdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
+      add_custom_target(limxsdk_lowlevel_target ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/liblimxsdk_lowlevel.so ${CATKIN_DEVEL_PREFIX}/lib
       )
     elseif (WIN32)
       set(LIB_PATH ${PROJECT_SOURCE_DIR}/lib/win)
-      add_custom_target(pointfoot_sdk_lowlevel_target ALL
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/pointfoot_sdk_lowlevel.dll ${CATKIN_DEVEL_PREFIX}/lib
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/pointfoot_sdk_lowlevel.lib ${CATKIN_DEVEL_PREFIX}/lib
+      add_custom_target(limxsdk_lowlevel_target ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/limxsdk_lowlevel.dll ${CATKIN_DEVEL_PREFIX}/lib
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${LIB_PATH}/limxsdk_lowlevel.lib ${CATKIN_DEVEL_PREFIX}/lib
       )
     else()
       message(FATAL_ERROR "Unsupported architecture!")
@@ -84,7 +84,7 @@ if(DEFINED ENV{ROS_DISTRO})
     install(DIRECTORY ${LIB_PATH}/. DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
     # Export the library
-    ament_export_libraries(pointfoot_sdk_lowlevel)
+    ament_export_libraries(limxsdk_lowlevel)
 
     # Export the include
     ament_export_include_directories(include)

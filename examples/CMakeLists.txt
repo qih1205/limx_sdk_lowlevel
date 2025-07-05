@@ -23,9 +23,9 @@ set(COMMON_SRCS
 )
 
 if (WIN32)
-  set(LINK_LIBS pointfoot_sdk_lowlevel shlwapi)
+  set(LINK_LIBS limxsdk_lowlevel shlwapi)
 else()
-  set(LINK_LIBS pointfoot_sdk_lowlevel pthread)
+  set(LINK_LIBS limxsdk_lowlevel pthread)
 endif()
 
 add_executable(pf_joint_move pf_joint_move.cpp ${COMMON_SRCS})
