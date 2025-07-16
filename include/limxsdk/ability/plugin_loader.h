@@ -183,8 +183,18 @@ public:
                     #endif
 
                     if (!fileExists(resolvedPath)) {
-                      std::cout << "Plugin not found: " << path << std::endl;
-                      return false;
+                      // 4. Try "lib" limxsdk::ability::path::lib()
+                      resolvedPath = limxsdk::ability::path::lib() + "/" + path;
+
+                      // Normalize path separators for Windows
+                      #ifdef _WIN32
+                      for (char& c : resolvedPath) if (c == '/') c = '\\';
+                      #endif
+
+                      if (!fileExists(resolvedPath)) {
+                        std::cout << "Plugin not found: " << path << std::endl;
+                        return false;
+                      }
                     }
                 }
             }
