@@ -42,8 +42,14 @@ public:
             YAML::Node yamlConfig = YAML::LoadFile(yamlPath);
             
             // Parse system configuration
-            if (yamlConfig["robot_ip"]) {
-                config.robotIp = yamlConfig["robot_ip"].as<std::string>();
+            config.robotIp = "127.0.0.1";
+            const char* env_robot_ip = std::getenv("ROBOT_IP");
+            if (env_robot_ip != nullptr) {
+                config.robotIp = std::string(env_robot_ip);
+            } else {
+                if (yamlConfig["robot_ip"]) {
+                    config.robotIp = yamlConfig["robot_ip"].as<std::string>();
+                }
             }
             
             if (yamlConfig["robot_type"]) {
