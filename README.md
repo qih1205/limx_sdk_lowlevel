@@ -1,4 +1,4 @@
-# Englinsh | [中文](README_cn.md)
+# English | [中文](README_cn.md)
 # LimX SDK Usage Guide
 
 ## 1. Set Up Development Environment
